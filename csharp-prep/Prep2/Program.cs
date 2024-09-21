@@ -6,39 +6,47 @@ class Program
     {
       //get user's grade percentage, convert to int
       Console.Write("What is your grade percentage? ");
-      string percentage = Console.ReadLine();
-
-      
-      int grade = int.Parse(percentage);
-
-      string sign = "+";
-
-    
+      string userPercentage = Console.ReadLine();
+      int numPercentage = int.Parse(userPercentage);
+      //initialize blank
+      string grade;
+      string sign;
 
 
-      if (grade >= 90)
+      if (numPercentage >= 90)
       {
-        if (grade % 10 >= 7)
-        {
-            
-        }
-        
+        grade = "A";      
       }
-      else if (grade >= 80)
+      else if (numPercentage >= 80)
       {
-        Console.WriteLine("Your grade is B");
+        grade = "B";
       }
-      else if (grade >= 70)
+      else if (numPercentage >= 70)
       {
-        Console.WriteLine($"Your grade is C{sign}");
+        grade = "C";
       }
-      else if (grade >= 60)
+      else if (numPercentage >= 60)
       {
-        Console.WriteLine("Your grade is D");
+        grade = "D";
       }
       else
       {
-        Console.WriteLine("Your grade is F");
+        grade = "F";
       }
+
+      if (numPercentage % 10 >= 7 && !(grade == "A") && !(grade == "F"))
+      {
+        sign = "+";
+      }
+      else if (numPercentage % 10 <= 3 && !(grade == "F"))
+      {
+        sign = "-";
+      }
+      else
+      {
+        sign = "";
+      }
+
+      Console.WriteLine($"Your grade is {grade}{sign}");
     }
 }
